@@ -4,6 +4,7 @@ from flask import jsonify
 from flask_cors import CORS
 import random
 from random import randrange
+import json
 
 app = Flask(__name__)
 CORS(app)
@@ -83,6 +84,7 @@ def get_users():
       resp = jsonify(success=True)
       resp.status_code = 201
       # 200 is the default code for a normal response
+      resp.data = json.dumps(userToAdd)
       return resp
    elif request.method == 'DELETE':
       # need to send whole user to the request
